@@ -1,0 +1,34 @@
+# Replace client_id and application_url after creating the app in Shopify Dev Dashboard.
+client_id = "5fc296e4a32b78c5d938780d8afa6569"
+name = "T-Shirt Designer"
+application_url = "http://localhost:3000"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "naaptol-store.myshopify.com"
+
+[webhooks]
+api_version = "2026-10"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/uninstalled"]
+  uri = "/webhooks"
+
+  [[webhooks.subscriptions]]
+  topics = ["customers/data_request", "customers/redact", "shop/redact"]
+  uri = "/webhooks"
+
+[access_scopes]
+scopes = "read_products,write_draft_orders"
+
+[auth]
+redirect_urls = [
+  "http://localhost:3000/auth/callback"
+   
+]
+
+[app_proxy]
+url = "https://YOUR-RENDER-SERVICE.onrender.com/proxy"
+subpath = "tshirt-designer"
+prefix = "apps"

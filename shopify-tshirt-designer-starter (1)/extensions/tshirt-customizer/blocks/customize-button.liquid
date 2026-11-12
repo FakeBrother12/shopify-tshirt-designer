@@ -1,0 +1,18 @@
+{% if product and product.tags contains 'customizable' %}
+  <div class="tshirt-customizer" data-product-id="{{ product.id }}" data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+    <a class="tshirt-customizer__button" href="{{ shop.url }}/apps/tshirt-designer?product={{ product.id }}&variant={{ product.selected_or_first_available_variant.id }}">
+      Customize T-Shirt
+    </a>
+  </div>
+  <style>
+    .tshirt-customizer__button{display:inline-flex;justify-content:center;align-items:center;padding:14px 24px;background:#171717;color:#fff;text-decoration:none;border-radius:8px;font-weight:700;width:100%;box-sizing:border-box}
+    .tshirt-customizer__button:hover{opacity:.88}
+  </style>
+{% endif %}
+{% schema %}
+{
+  "name": "T-shirt customize button",
+  "target": "section",
+  "settings": []
+}
+{% endschema %}
